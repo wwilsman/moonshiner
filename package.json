@@ -1,0 +1,20 @@
+{
+  "name": "moonshiner",
+  "description": "High-proof testing",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./utils": "./lib/utils.js",
+    "./server": "./lib/server.js",
+    "./runner": "./lib/runner.js",
+    "./browsers": "./lib/browsers.js",
+    "./reporters": "./lib/reporters.js",
+    "./middlewares": "./lib/middlwares.js"
+  }
+}

@@ -1,0 +1,323 @@
+<div align="center">
+
+# Moonshiner
+
+High-proof testing
+
+[Installation](#installation) •
+[Getting Started](#getting-started) •
+[Reporting](#reporting) •
+[Server](#server) •
+[Hooks](#hooks) •
+[Context](#context)
+
+</div>
+
+## Installation
+
+``` shell
+$ npm install --save-dev moonshiner
+```
+
+## Getting Started
+
+Write tests with familiar test methods:
+
+``` javascript
+import { describe, it, run } from 'moonshiner';
+
+// write tests
+describe('My tests', () => {
+  it('passes', () => {
+    assert.ok(true);
+  });
+
+  it('fails', () => {
+    assert.ok(false);
+  });
+});
+
+// run tests
+run();
+```
+
+...but nothing happened? Since Moonshiner doesn't come configured by default, we need to add a reporter.
+
+## Reporting
+
+Reporters are middlewares for Moonshiner test runners:
+
+``` javascript
+import { use, describe, it, run } from 'moonshiner';
+import reporters from 'moonshiner/reporters';
+
+// use reporters
+use(reporters.emoji());
+
+// write tests
+describe('My tests', () => ...);
+
+// run tests
+run();
+```
+
+Et voilà! Now we can see our tests are actually running:
+
+``` shell
+
+  My tests
+    ✅ works
+    ❌ fails
+AssertionError: false == true
+    at ...
+
+```
+
+The above examples will work in both Node and browser environments. Moonshiner also allows
+orchestrating tests between multiple environments using a Moonshiner server.
+
+## Server
+
+A Moonshiner server allows orchestration of many remote runners. Server reporters can be added just
+like you would with Moonshiner test runners:
+
+``` javascript
+import createTestServer from 'moonshiner/server';
+import reporters from 'moonshiner/reporters';
+
+// create a test server
+const server = createTestServer();
+
+// use reporters
+server.use(reporters.emoji());
+
+// listen for tests
+server.listen();
+```
+
+Back in our test environment, we can utilize Moonshiner's remote reporter:
+
+``` javascript
+import { use, describe, it, run } from 'moonshiner';
+import reporters from 'moonshiner/reporters';
+import WebSocket from 'ws';
+
+// use the remote reporter with the `ws` package
+use(reporters.remote({ WebSocket });
+
+// write tests
+describe('My tests', () => ...);
+
+// run tests
+run();
+```
+
+Running the test server will wait until the test client has connected before running tests. While
+tests run, the remote reporter will communicate with the server reporter to output test results.
+
+By default, the test server will exit as soon as tests have completed. Setting `once: false` during
+server creation will prevent this default behavior.
+
+**_Moonshiner's default `once` option currently only supports a single remote runner. Multiple
+remote runners will soon be more easily supported in an upcoming release._**
+
+### Browsers
+
+Browser tests can also be run remotely. Moonshiner even offers a way to launch a browser and
+navigate directly to a URL while using the test server.
+
+``` javascript
+import { createTestServer } from 'moonshiner/server';
+import { launchBrowser } from 'moonshiner/browsers';
+import reporters from 'moonshiner/reporters';
+
+// create a test server that launches a browser on start
+const server = createTestServer(() => {
+  return launchBrowser('http://localhost:3000');
+});
+
+// use reporters
+server.use(reporters.emoji());
+
+// listen for tests
+server.listen();
+```
+
+This time we won't need to provide our own WebSocket implementation since one is available globally
+in the browser environment:
+
+``` javascript
+import { use, run } from 'moonshiner';
+import reporters from 'moonshiner/reporters';
+
+// defaults to the global WebSocket class
+use(reporters.remote());
+
+// write tests
+describe('My tests', () => ...);
+
+// run tests
+run();
+```
+
+Running the test server will now launch a browser and run our tests. We could also start and stop
+our development server directly from the test server as well.
+
+### Development
+
+The Moonshiner test server accepts a hook as one of its arguments. This hook is run after the server
+starts listening. If the hook returns a teardown function, it is called when the test server closes.
+
+Similarly, the browser launcher also accepts a hook as one of its arguments. The launcher, like a
+traditional test hook, will return a teardown function used to close the browser process, which
+calls on it's own returned teardown hook.
+
+The combination of the two hooks allows the Moonshiner test server to automatically open and close
+the browser within the provided hook. Likewise, any process can be handled in the same manner:
+
+``` javascript
+import { createTestServer } from 'moonshiner/server';
+import { launchBrowser } from 'moonshiner/browsers';
+import reporters from 'moonshiner/reporters';
+
+// for this example, we'll use a vite server
+import { createServer } from 'vite';
+
+// create a test server
+const server = createTestServer(() => {
+  // start the vite server
+  let vite = await createServer();
+  await vite.listen();
+
+  // get the localhost url
+  let [url] = devServer.resolvedUrls.local;
+
+  // launch a browser
+  return launchBrowser(url, () => {
+    // the browser has launched; return a teardown function
+    return () => vite.close();
+  });
+});
+
+// use reporters
+server.use(reporters.emoji());
+
+// listen for tests
+server.listen();
+```
+
+## Hooks
+
+Test hooks are a way to encapsulate setup & teardown behavior that are commonly used when writing
+tests. The hook's setup function can return a teardown function that is automatically called during
+subsequent hook calls. The teardown function is also returned from the hook for manual usage.
+
+``` javascript
+import { createTestHook } from 'moonshiner/utils';
+
+// hooks can by synchronous or asynchronous
+const myHook = createTestHook(x => {
+  console.log(`setup ${x}`);
+
+  // runs before the next invocation
+  return () => {
+    console.log(`teardown ${x}`);
+  };
+});
+
+myHook('foo');
+//=> setup foo
+
+myHook('bar');
+//=> teardown foo
+//=> setup bar
+
+let teardown = myHook(42);
+//=> teardown bar
+//=> setup 42
+
+teardown();
+//=> teardown 42
+```
+
+### Built-ins
+
+The callback function provided to `beforeEach` is also treated as a test hook. Any returned function
+will be called during subsequent `beforeEach` calls.
+
+``` javascript
+describe('Hook example', () => {
+  let count = 0;
+
+  beforeEach(() => {
+    count += 5;
+
+    // runs before the next invocation
+    return () => {
+      count -= 2;
+    }
+  });
+
+  it('is 5', () => {
+    assert.equal(count, 5);
+  });
+
+  it('is 8', () => {
+    assert.equal(count, 8);
+  });
+
+  it('is 11', () => {
+    assert.equal(count, 11);
+  });
+});
+```
+
+## Context
+
+Rather than importing Moonshiner test methods in every test suite, Moonshiner makes test methods
+available within each suite context as well:
+
+``` javascript
+import { describe } from 'moonshiner';
+
+const suite = describe('My tests', ctx => {
+  let { beforeEach, it } = ctx;
+
+  beforeEach(() => ...);
+  it('works', () => ...);
+  it('fails', () => ...);
+
+  describe('nested', () => {
+    beforeEach(() => ...);
+    it('still works', () => ...);
+  });
+});
+
+// each suite is its own test runner
+suite.run();
+```
+
+### Globals
+
+A Moonshiner runner may use a context-binding middleware to bind
+test methods to any provided context, including the global context:
+
+``` javascript
+import { use, run } from 'moonshiner';
+import middlewares from 'moonshiner/middlewares';
+
+// bind test methods to the provided context
+use(middlewares.bind(globalThis));
+
+// test methods are now globally available
+describe('My tests', () => {
+  beforeEach(() => ...);
+
+  it('works', () => ...);
+
+  // ...
+});
+
+// run tests
+run();
+```
