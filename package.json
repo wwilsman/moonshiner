@@ -15,6 +15,6 @@
     "./runner": "./lib/runner.js",
     "./browsers": "./lib/browsers.js",
     "./reporters": "./lib/reporters.js",
-    "./middlewares": "./lib/middlwares.js"
+    "./middlewares": "./lib/middlewares.js"
   }
 }
