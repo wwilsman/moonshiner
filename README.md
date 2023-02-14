@@ -118,9 +118,6 @@ tests run, the remote reporter will communicate with the server reporter to outp
 By default, the test server will exit as soon as tests have completed. Setting `once: false` during
 server creation will prevent this default behavior.
 
-**_Moonshiner's default `once` option currently only supports a single remote runner. Multiple
-remote runners will soon be more easily supported in an upcoming release._**
-
 ### Browsers
 
 Browser tests can also be run remotely. Moonshiner even offers a way to launch a browser and
@@ -128,16 +125,17 @@ navigate directly to a URL while using the test server.
 
 ``` javascript
 import { createTestServer } from 'moonshiner/server';
-import { launchBrowser } from 'moonshiner/browsers';
 import reporters from 'moonshiner/reporters';
+import browsers from 'moonshiner/browsers';
 
-// create a test server that launches a browser on start
-const server = createTestServer(() => {
-  return launchBrowser('http://localhost:3000');
-});
+// create a test server
+const server = createTestServer();
 
 // use reporters
 server.use(reporters.emoji());
+
+// use browser launching middleware
+server.use(browsers.launch('http://localhost:3000'));
 
 // listen for tests
 server.listen();
@@ -161,46 +159,45 @@ run();
 ```
 
 Running the test server will now launch a browser and run our tests. We could also start and stop
-our development server directly from the test server as well.
+our development server directly from the test server as well using other middleware.
 
 ### Development
 
-The Moonshiner test server accepts a hook as one of its arguments. This hook is run after the server
-starts listening. If the hook returns a teardown function, it is called when the test server closes.
-
-Similarly, the browser launcher also accepts a hook as one of its arguments. The launcher, like a
-traditional test hook, will return a teardown function used to close the browser process, which
-calls on it's own returned teardown hook.
-
-The combination of the two hooks allows the Moonshiner test server to automatically open and close
-the browser within the provided hook. Likewise, any process can be handled in the same manner:
+Moonshiner offers built-in middlewares for various configurations. The `listen` middleware can be
+used with a test server to provide custom setup and teardown behavior. The provided function is
+called when the test server starts listening, and any returned teardown function will be called when
+the test server closes.
 
 ``` javascript
 import { createTestServer } from 'moonshiner/server';
-import { launchBrowser } from 'moonshiner/browsers';
+import middlewares from 'moonshiner/middlewares';
 import reporters from 'moonshiner/reporters';
+import browsers from 'moonshiner/browsers';
 
 // for this example, we'll use a vite server
 import { createServer } from 'vite';
 
 // create a test server
-const server = createTestServer(() => {
+const server = createTestServer();
+
+// use reporters
+server.use(reporters.emoji());
+
+// use custom listen middleware
+server.use(middlewares.listen(() => {
   // start the vite server
   let vite = await createServer();
   await vite.listen();
 
-  // get the localhost url
-  let [url] = devServer.resolvedUrls.local;
+  // use browser launcher after server start
+  let [url] = vite.resolvedUrls.local;
+  server.use(browsers.launch(url));
 
-  // launch a browser
-  return launchBrowser(url, () => {
-    // the browser has launched; return a teardown function
-    return () => vite.close();
-  });
+  // close the vite server during teardown
+  return async () => {
+    await vite.close();
+  };
 });
-
-// use reporters
-server.use(reporters.emoji());
 
 // listen for tests
 server.listen();
@@ -299,8 +296,8 @@ suite.run();
 
 ### Globals
 
-A Moonshiner runner may use a context-binding middleware to bind
-test methods to any provided context, including the global context:
+A Moonshiner runner may use a context-binding middleware to bind test methods to any provided
+context, including the global context:
 
 ``` javascript
 import { use, run } from 'moonshiner';
