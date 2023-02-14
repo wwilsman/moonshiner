@@ -16,5 +16,11 @@
     "./browsers": "./lib/browsers.js",
     "./reporters": "./lib/reporters.js",
     "./middlewares": "./lib/middlewares.js"
+  },
+  "optionalPeerDependencies": {
+    "ws": "^8.0.0"
+  },
+  "devDependencies": {
+    "ws": "^8.0.0"
   }
 }
