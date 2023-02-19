@@ -68,8 +68,14 @@ Et voilà! Now we can see our tests are actually running:
   My tests
     ✅ works
     ❌ fails
+
+Failed:
+
+My tests / fails
 AssertionError: false == true
     at ...
+
+Passing: 1; Failing: 1; Skipped: 0
 
 ```
 
