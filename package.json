@@ -15,7 +15,10 @@
     "./runner": "./lib/runner.js",
     "./browsers": "./lib/browsers.js",
     "./reporters": "./lib/reporters.js",
-    "./middlewares": "./lib/middlewares.js"
+    "./middlewares": {
+      "node": "./lib/middlewares.node.js",
+      "default": "./lib/middlewares.js"
+    }
   },
   "dependencies": {
     "cross-spawn": "^7.0.3",
