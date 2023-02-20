@@ -1,4 +1,5 @@
 .local-chromium
+.local-firefox
 node_modules
 .yarn*
 .pnp*
