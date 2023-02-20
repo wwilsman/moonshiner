@@ -20,6 +20,9 @@
       "default": "./lib/middlewares.js"
     }
   },
+  "scripts": {
+    "lint": "eslint --ignore-path .gitignore ."
+  },
   "dependencies": {
     "cross-spawn": "^7.0.3",
     "extract-zip": "^2.0.1",
@@ -27,5 +30,12 @@
     "tar-fs": "^2.1.1",
     "unbzip2-stream": "^1.4.3",
     "ws": "^8.12.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.33.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1"
   }
 }
