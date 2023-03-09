@@ -18,6 +18,10 @@
     "./middlewares": {
       "node": "./lib/middlewares.node.js",
       "default": "./lib/middlewares.js"
+    },
+    "./logger": {
+      "node": "./lib/logger.node.js",
+      "default": "./lib/logger.js"
     }
   },
   "scripts": {
