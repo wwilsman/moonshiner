@@ -246,7 +246,7 @@ teardown();
 ### Built-ins
 
 The callback function provided to `beforeEach` is also treated as a test hook. Any returned function
-will be called during subsequent `beforeEach` calls.
+will be called during subsequent calls _of the same `beforeEach` reference_.
 
 ``` javascript
 describe('Hook example', () => {
@@ -274,6 +274,11 @@ describe('Hook example', () => {
   });
 });
 ```
+
+**Important:** when a `describe` suite finishes, _it does not run any teardown functions_. This is
+intentional, so tests can be inspected in their current state after they run. However, this also
+means that teardown functions returned from `beforeEach` _will not run between suites_. For this reason,
+it is usually recommended to prefer creating a custom hook using `createTestHook`.
 
 ## Context
 
