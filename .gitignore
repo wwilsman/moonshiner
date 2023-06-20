@@ -1,3 +1,4 @@
+.local-chrome
 .local-chromium
 .local-firefox
 node_modules
