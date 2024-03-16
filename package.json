@@ -7,22 +7,12 @@
   "files": [
     "lib"
   ],
-  "main": "lib/index.js",
+  "main": "lib/harness.js",
   "exports": {
-    ".": "./lib/index.js",
-    "./utils": "./lib/utils.js",
+    ".": "./lib/harness.js",
     "./server": "./lib/server.js",
-    "./runner": "./lib/runner.js",
-    "./launchers": "./lib/launchers.js",
-    "./reporters": "./lib/reporters.js",
-    "./middlewares": {
-      "node": "./lib/middlewares.node.js",
-      "default": "./lib/middlewares.js"
-    },
-    "./logger": {
-      "node": "./lib/logger.node.js",
-      "default": "./lib/logger.js"
-    }
+    "./browser/*": "./lib/browser/*.js",
+    "./reporter/*": "./lib/reporter/*.js"
   },
   "scripts": {
     "lint": "eslint --ignore-path .gitignore ."
