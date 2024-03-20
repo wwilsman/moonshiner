@@ -9,10 +9,16 @@
   ],
   "main": "lib/harness.js",
   "exports": {
-    ".": "./lib/harness.js",
-    "./server": "./lib/server.js",
-    "./browser/*": "./lib/browser/*.js",
-    "./reporter/*": "./lib/reporter/*.js"
+    ".": {
+      "node": "./lib/harness.node.js",
+      "default": "./lib/harness.js"
+    },
+    "./reporter/*": {
+      "default": "./lib/reporter/*.js"
+    },
+    "./server": {
+      "node": "./lib/server.js"
+    }
   },
   "scripts": {
     "lint": "eslint --ignore-path .gitignore ."
