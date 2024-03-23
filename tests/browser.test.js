@@ -1,4 +1,4 @@
-import { configure } from '../lib/harness.node.js';
+import { configure, describe, it } from '../lib/harness.node.js';
 
 configure({
   browsers: [
@@ -38,4 +38,8 @@ configure({
         </html>`
     }]
   }
+});
+
+describe('merges unique tests', () => {
+  it('should report once', () => {});
 });
