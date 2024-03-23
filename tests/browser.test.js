@@ -6,7 +6,7 @@ configure({
     'Firefox'
   ],
   server: {
-    serve: [{
+    serve: ['.', {
       '/index.html': `
         <!doctype html>
         <html lang="en">
@@ -36,6 +36,6 @@ configure({
           </script>
         </body>
         </html>`
-    }, '.']
+    }]
   }
 });
