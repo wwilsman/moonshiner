@@ -1,13 +1,20 @@
+{"stdout":"\n"}
+{"stdout":"🚀 \u001b[37mRunning tests\u001b[39m\n"}
 {"stderr":"Launching Google Chrome\n"}
 {"stderr":"Launching Firefox\n"}
+{"stdout":"\n"}
+{"stdout":"  \u001b[37mmerges unique tests\u001b[39m\n"}
 {"stdout":"[Google Chrome] running\n"}
 {"stdout":"[Firefox] running\n"}
+{"stdout":"    ✅ \u001b[32mshould report once\u001b[39m\n"}
+{"stdout":"    💤 \u001b[34mshould report skipped\u001b[39m\n"}
+{"stdout":"    ✅ \u001b[32mws://localhost:55012/a549334fe66edef7\u001b[39m\n"}
+{"stdout":"    ✅ \u001b[32mws://localhost:55012/9a09d525f6765176\u001b[39m\n"}
 {"stdout":"\n"}
-{"stdout":"  ✅ runs from the browser\n"}
+{"stdout":"  ✅ \u001b[32mruns from the browser\u001b[39m\n"}
 {"stdout":"\n"}
-{"stdout":"  merges unique tests\n"}
-{"stdout":"    ✅ should report once\n"}
-{"stdout":"    💤 should report skipped\n"}
-{"stdout":"    ✅ ws://localhost:57902/f532f16e8b2f6e24\n"}
-{"stdout":"    ✅ ws://localhost:57902/8ae7868b435a096d\n"}
+{"stdout":"🏁 \u001b[37mSummary\u001b[39m\n"}
+{"stdout":"\n"}
+{"stdout":"  ✅ \u001b[32m4 passing\u001b[39m\u001b[2m (2.7s)\u001b[22m\n"}
+{"stdout":"  💤 \u001b[34m1 skipped\u001b[39m\n"}
 {"stdout":"\n"}

@@ -1,12 +1,18 @@
 {"stdout":"\n"}
-{"stdout":"  ✅ should run first\n"}
+{"stdout":"🚀 \u001b[37mRunning tests\u001b[39m\n"}
 {"stdout":"\n"}
-{"stdout":"  within a suite\n"}
-{"stdout":"    ✅ should run second\n"}
+{"stdout":"  ✅ \u001b[32mshould run first\u001b[39m\n"}
 {"stdout":"\n"}
-{"stdout":"    within a nested suite\n"}
-{"stdout":"      ✅ should run third\n"}
-{"stdout":"        ✅ should run fourth\n"}
+{"stdout":"  \u001b[37mwithin a suite\u001b[39m\n"}
+{"stdout":"    ✅ \u001b[32mshould run second\u001b[39m\n"}
 {"stdout":"\n"}
-{"stdout":"  ✅ should run fifth\n"}
+{"stdout":"    \u001b[37mwithin a nested suite\u001b[39m\n"}
+{"stdout":"      ✅ \u001b[32mshould run third\u001b[39m\n"}
+{"stdout":"        ✅ \u001b[32mshould run fourth\u001b[39m\n"}
+{"stdout":"\n"}
+{"stdout":"  ✅ \u001b[32mshould run fifth\u001b[39m\n"}
+{"stdout":"\n"}
+{"stdout":"🏁 \u001b[37mSummary\u001b[39m\n"}
+{"stdout":"\n"}
+{"stdout":"  ✅ \u001b[32m5 passing\u001b[39m\u001b[2m (1.2s)\u001b[22m\n"}
 {"stdout":"\n"}
