@@ -14,5 +14,5 @@
 {"stdout":"\n"}
 {"stdout":"🏁 \u001b[37mSummary\u001b[39m\n"}
 {"stdout":"\n"}
-{"stdout":"  ✅ \u001b[32m5 passing\u001b[39m\u001b[2m (1.2s)\u001b[22m\n"}
+{"stdout":"  ✅ \u001b[32m5 passing\u001b[39m\n"}
 {"stdout":"\n"}

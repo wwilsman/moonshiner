@@ -1,10 +1,19 @@
-import { configure, describe, it } from '../lib/harness.node.js';
+import { describe, it, configure } from '../lib/harness.node.js';
+
+describe('merges unique tests', () => {
+  it('should report once', () => {
+    console.log('[process] running');
+  });
+});
 
 configure({
-  browsers: [
-    'Chrome',
-    'Firefox'
-  ],
+  // debug: true,
+  // browser: 'Chrome',
+  // browser: 'Firefox',
+  browsers: ['Chrome', 'Firefox'],
+  // browser: { name: 'Chrome'/*, ...options */ },
+  // browser: { names: ['Chrome', 'Firefox']/*, ...options */ },
+  // browsers: [{ name: 'Chrome'/*, ...options */ }, { name: 'Firefox'/*, ...options */ }],
   server: {
     serve: ['.', {
       '/index.html': `
@@ -38,8 +47,4 @@ configure({
         </html>`
     }]
   }
-});
-
-describe('merges unique tests', () => {
-  it('should report once', () => {});
 });

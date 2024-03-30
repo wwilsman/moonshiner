@@ -2,16 +2,17 @@
 {"stdout":"🚀 \u001b[37mRunning tests\u001b[39m\n"}
 {"stderr":"Launching Google Chrome\n"}
 {"stderr":"Launching Firefox\n"}
+{"stdout":"[Google Chrome] running\n"}
+{"stdout":"\n"}
+{"stdout":"  ✅ \u001b[32mruns from the browser\u001b[39m\n"}
 {"stdout":"\n"}
 {"stdout":"  \u001b[37mmerges unique tests\u001b[39m\n"}
-{"stdout":"[Google Chrome] running\n"}
+{"stdout":"[process] running\n"}
 {"stdout":"[Firefox] running\n"}
 {"stdout":"    ✅ \u001b[32mshould report once\u001b[39m\n"}
 {"stdout":"    💤 \u001b[34mshould report skipped\u001b[39m\n"}
-{"stdout":"    ✅ \u001b[32mws://localhost:55012/a549334fe66edef7\u001b[39m\n"}
-{"stdout":"    ✅ \u001b[32mws://localhost:55012/9a09d525f6765176\u001b[39m\n"}
-{"stdout":"\n"}
-{"stdout":"  ✅ \u001b[32mruns from the browser\u001b[39m\n"}
+{"stdout":"    ✅ \u001b[32mws://localhost:61941/d0c4cf0c3c48398f\u001b[39m\n"}
+{"stdout":"    ✅ \u001b[32mws://localhost:61941/8d67e2450cf5a74d\u001b[39m\n"}
 {"stdout":"\n"}
 {"stdout":"🏁 \u001b[37mSummary\u001b[39m\n"}
 {"stdout":"\n"}

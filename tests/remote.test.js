@@ -1,11 +1,13 @@
 import { fork } from 'node:child_process';
-import { before } from '../lib/harness.js';
+import { configure } from '../lib/harness.node.js';
 
 import './harness.test.js';
 
-before(async test => {
-  await test.connect(() => [1, 2].map(() =>
-    fork('./tests/harness.test.js', {
-      env: { ...process.env, __MOONSHINER_REMOTE__: 'process' }
-    })));
+configure({
+  plugins: [
+    api => api.connect(() => [1, 2].map(() =>
+      fork('./tests/harness.test.js', {
+        env: { __MOONSHINER_REMOTE__: 'process' }
+      })))
+  ]
 });
