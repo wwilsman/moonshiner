@@ -13,11 +13,18 @@
       "node": "./lib/harness.node.js",
       "default": "./lib/harness.js"
     },
+    "./reporters": {
+      "default": "./lib/reporter/index.js"
+    },
     "./reporter/*": {
       "default": "./lib/reporter/*.js"
     },
-    "./server": {
-      "node": "./lib/server.js"
+    "./plugins": {
+      "node": "./lib/plugin/index.node.js",
+      "default": "./lib/plugin/index.js"
+    },
+    "./plugin/*": {
+      "default": "./lib/plugin/*.js"
     }
   },
   "scripts": {
