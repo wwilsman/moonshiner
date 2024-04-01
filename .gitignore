@@ -1,5 +1,5 @@
+.DS_Store
 .local-chrome
-.local-chromium
 .local-firefox
 node_modules
 *.lock
