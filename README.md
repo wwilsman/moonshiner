@@ -5,8 +5,9 @@
 High-proof testing
 
 [Installation](#installation) •
-[Writing Tests](#writing-tests) •
-[Browser Tests](#browser-tests)
+[Writing tests](#writing-tests) •
+[Browser tests](#browser-tests) •
+[Visual tests](#visual-tests)
 
 </div>
 
@@ -65,9 +66,9 @@ $ node tests/test.js
 
 ## Browser tests
 
-Moonshiner tests are isomorphic and run in both Node and Browser environments. Moonshiner also
-features the ability to launch browsers and serve files. This is done using the `configure` function
-from within a Node test script.
+Moonshiner tests are isomorphic and can run in both Node and Browser environments. Moonshiner also
+features the ability to automatically launch browsers and serve files. This is done using the
+`configure` function from within a Node test script.
 
 ``` javascript
 // tests/run.js
@@ -172,6 +173,47 @@ run();
 
 </details>
 
+## Visual tests
+
+When running tests in supported browsers, a `screenshot` method is made available to testing
+contexts. This method can be used to capture screenshots of the current page, with the ability to
+resize the browser before and after capturing screenshots. If a screenshot already exists, a new
+screenshot is created beside the existing one.
+
+To enable visual tests, which compares new and existing screenshots, a screenshot compare function
+must be configured in your Node test script. The example below uses [odiff](https://github.com/dmtrKovalenko/odiff),
+whose API is directly compatible with Moonshiner visual tests.
+
+``` javascript
+import { configure } from 'moonshiner';
+import { compare } from 'odiff-bin';
+
+configure({
+  browser: 'Chrome',
+  screenshots: {
+    // optional screenshots directory,
+    directory: '__screenshots__',
+    // optional suffix given to new screenshots when there is an existing screenshot
+    newSuffix: 'new',
+    // optional suffix given to screenshot diffs produced by the compare function
+    diffSuffix: 'diff',
+    // required to enable visual tests
+    async compare(baseline, comparison, diff) {
+      // should produce a diff file if baseline and comparison do not match
+      let { match } = await compare(baseline, changed, diff);
+      // should return an object with a `match` property
+      return { match };
+    }
+  }
+});
+```
+
+Other comparison tools may also be used as long as they are configured with Moonshiner to to produce
+the expected return value and diff output. When a screenshot exists and new one is created, the
+configured compare function will be called with the existing screenshot path, the new screenshot
+path, and a diff output path. This function should return an object with a `match` property, which
+should be `false` when a diff is created, or `true` when the existing and new screenshots match.
+
 ## Still brewing
 
-Planned features are still coming soon, such as additional reporters, visual tests, a CLI, and more!
+Planned features are still coming soon, such as additional reporters, a CLI, and more!
