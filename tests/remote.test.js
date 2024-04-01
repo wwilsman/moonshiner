@@ -5,8 +5,8 @@ import './harness.test.js';
 
 configure({
   plugins: [
-    api => api.connect(() => [1, 2].map(() =>
-      fork('./tests/harness.test.js', {
+    test => test.emit('remote:connect', () =>
+      [1, 2].map(() => fork('./tests/harness.test.js', {
         env: { __MOONSHINER_REMOTE__: 'process' }
       })))
   ]
