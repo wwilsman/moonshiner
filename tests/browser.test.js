@@ -20,6 +20,11 @@ configure({
         <!doctype html>
         <html lang="en">
         <body>
+          <style>
+            html, body { height: 100%; margin: 0; padding; 0; font: 2rem system-ui; }
+            #test { display: grid; place-content: center; height: 100%; }
+          </style>
+          <div id="test">Test</div>
           <script type="module">
             import { describe, it } from '/lib/harness.js';
 
@@ -28,14 +33,14 @@ configure({
             });
 
             describe('merges unique tests', () => {
-              it('should report once', () => {});
-              it('should report skipped');
+              it('reports once', () => {});
+              it('reports skipped');
 
-              it(sessionStorage.getItem('__MOONSHINER_REMOTE__'), async () => {
-                await DevTools.send('Emulation.setDeviceMetricsOverride', {
-                  width: 400, height: 0, deviceScaleFactor: 0, mobile: true
-                });
+              it('takes a screenshot', async t => {
+                await t.screenshot();
               });
+
+              it(sessionStorage.getItem('__MOONSHINER_REMOTE__'), () => {});
             });
 
             if (!sessionStorage.getItem('reloaded')) setTimeout(() => {
