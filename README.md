@@ -175,44 +175,46 @@ run();
 
 ## Visual tests
 
-When running tests in supported browsers, a `screenshot` method is made available to testing
-contexts. This method can be used to capture screenshots of the current page, with the ability to
-resize the browser before and after capturing screenshots. If a screenshot already exists, a new
-screenshot is created beside the existing one.
+When running tests in supported browsers, a `screenshot()` method is made available to test
+contexts. This method can be used to capture screenshots of the current page using the test name as
+the screenshot name. If a screenshot already exists and it does not match the new screenshot, the
+new screenshot is saved beside the existing one and a test error is raised.
 
-To enable visual tests, which compares new and existing screenshots, a screenshot compare function
-must be configured in your Node test script. The example below uses [odiff](https://github.com/dmtrKovalenko/odiff),
-whose API is directly compatible with Moonshiner visual tests.
+By default, screenshots are compared using strict equality of their base64 contents. A custom
+screenshot `compare()` method can be configured to compare screenshots using other methods. The
+example below uses [odiff](https://github.com/dmtrKovalenko/odiff), a pixel differencing tool.
 
 ``` javascript
+// tests/run.js
 import { configure } from 'moonshiner';
 import { compare } from 'odiff-bin';
 
 configure({
   browser: 'Chrome',
   screenshots: {
-    // optional screenshots directory,
-    directory: '__screenshots__',
-    // optional suffix given to new screenshots when there is an existing screenshot
-    newSuffix: 'new',
-    // optional suffix given to screenshot diffs produced by the compare function
-    diffSuffix: 'diff',
-    // required to enable visual tests
+    /** optional path where screenshots will be saved */
+    // directory: '__screenshots__',
+    /** optional custom suffix used for new screenshots */
+    // newSuffix: '.new'
+    /** optional custom suffix used for diff images */
+    // newSuffix: '.diff'
+    /** optional screenshot comparison function */
     async compare(baseline, comparison, diff) {
-      // should produce a diff file if baseline and comparison do not match
-      let { match } = await compare(baseline, changed, diff);
-      // should return an object with a `match` property
+      // accepts image paths to compare, producing a diff image if not matching
+      let { match } = await compare(baseline, comparison, diff);
+      // should return { match: true } if no difference is found
       return { match };
     }
-  }
+  },
+  // ...
 });
 ```
 
-Other comparison tools may also be used as long as they are configured with Moonshiner to to produce
-the expected return value and diff output. When a screenshot exists and new one is created, the
-configured compare function will be called with the existing screenshot path, the new screenshot
-path, and a diff output path. This function should return an object with a `match` property, which
-should be `false` when a diff is created, or `true` when the existing and new screenshots match.
+When comparing screenshots, the compare function will be called with the existing screenshot path
+and the new screenshot path. This function should return an object with a `match` property which
+should be `true` when screenshots match. The compare function is also called with a third argument,
+a diff path, which can be used to save a diff image with the other screenshots. Any existing diff
+image is removed before comparing new screenshots.
 
 ## Still brewing
 
