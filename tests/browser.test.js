@@ -1,7 +1,7 @@
 import { describe, it, configure } from '../lib/harness.node.js';
 
 describe('merges unique tests', () => {
-  it('should report once', () => {
+  it('reports once', () => {
     console.log('[process] running');
   });
 });
