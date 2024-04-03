@@ -8,12 +8,18 @@ describe('merges unique tests', () => {
 
 configure({
   // debug: true,
-  // browser: 'Chrome',
-  // browser: 'Firefox',
-  browsers: ['Chrome', 'Firefox'],
-  // browser: { name: 'Chrome'/*, ...options */ },
-  // browser: { names: ['Chrome', 'Firefox']/*, ...options */ },
-  // browsers: [{ name: 'Chrome'/*, ...options */ }, { name: 'Firefox'/*, ...options */ }],
+
+  browsers: [
+    'Firefox',
+    'Chrome',
+    {
+      name: 'Chrome (mobile)',
+      browser: 'Chrome',
+      width: 720,
+      height: 1280
+    }
+  ],
+
   server: {
     serve: ['.', {
       '/index.html': `
