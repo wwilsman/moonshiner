@@ -40,6 +40,10 @@ configure({
                 await t.screenshot();
               });
 
+              it('should fail for existing screenshot', async t => {
+                await t.screenshot('takes a screenshot');
+              });
+
               it(sessionStorage.getItem('__MOONSHINER_REMOTE__'), () => {});
             });
 
