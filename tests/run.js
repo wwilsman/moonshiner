@@ -14,9 +14,8 @@ await mkdir(snapshotDirectory, { recursive: true });
 async function runTests(file, {
   expectExitCode = 0
 } = {}) {
-  let name = file.replaceAll(/^tests\//g, '');
+  let name = file.replaceAll(/^tests\/|\.test\.js$/g, '');
   let snapshot = join(snapshotDirectory, name);
-
   let child = fork(file, { silent: true });
   let deferred = new DeferredPromise();
   let output = [];
@@ -30,9 +29,8 @@ async function runTests(file, {
 
   let exitCode = await deferred;
   let result = output.map(l => JSON.stringify(l)).join('\n');
-  let expected = await readFile(snapshot, 'utf-8').catch(() => '');
-
-  if (updateSnapshots && expected !== result) writeFile(snapshot, result);
+  let expected = await readFile(snapshot, 'utf-8').catch(() => {});
+  if (expected == null || updateSnapshots) writeFile(snapshot, result);
   else assert.equal(result, expected);
 
   assert.equal(exitCode, expectExitCode, (
