@@ -1,0 +1,39 @@
+{"stdout":"\n"}
+{"stdout":"🚀 \u001b[37mRunning tests\u001b[39m\n"}
+{"stderr":"Launching Google Chrome\n"}
+{"stderr":"Launching Firefox\n"}
+{"stdout":"\n"}
+{"stdout":"  \u001b[37mmerges unique tests\u001b[39m\n"}
+{"stdout":"[process] running\n"}
+{"stdout":"[Google Chrome] running\n"}
+{"stdout":"[Firefox] running\n"}
+{"stdout":"  ✅ \u001b[32mruns from the browser\u001b[39m\n"}
+{"stdout":"    ✅ \u001b[32mreports once\u001b[39m\n"}
+{"stdout":"    💤 \u001b[34mreports skipped\u001b[39m\n"}
+{"stdout":"    ✅ \u001b[32mtakes a screenshot\u001b[39m\n"}
+{"stdout":"    ❌ \u001b[31mshould fail for existing screenshot\u001b[39m\n"}
+{"stdout":"    ✅ \u001b[32mws://localhost:54067/6f3015aa13643959\u001b[39m\n"}
+{"stdout":"    ✅ \u001b[32mws://localhost:54067/810e4e6431657207\u001b[39m\n"}
+{"stdout":"\n"}
+{"stdout":"❌ \u001b[31mFailed\u001b[39m\n"}
+{"stdout":"\n"}
+{"stdout":"  \u001b[37mmerges unique tests\u001b[39m\n"}
+{"stdout":"    \u001b[31mshould fail for existing screenshot\u001b[39m\n"}
+{"stdout":"      Error: Duplicate screenshot name\n"}
+{"stdout":"      \u001b[2m  at file:///Users/wil/Code/moonshiner/lib/plugin/screenshot.js:63:34\n"}
+{"stdout":"        at trigger (file:///Users/wil/Code/moonshiner/lib/test.js:129:17)\n"}
+{"stdout":"        at trigger (file:///Users/wil/Code/moonshiner/lib/test.js:134:43)\n"}
+{"stdout":"        at async TestSuite.emit (file:///Users/wil/Code/moonshiner/lib/test.js:137:19)\n"}
+{"stdout":"        at async file:///Users/wil/Code/moonshiner/lib/browser/base.js:113:11\n"}
+{"stdout":"        at async trigger (file:///Users/wil/Code/moonshiner/lib/test.js:129:11)\n"}
+{"stdout":"        at async trigger (file:///Users/wil/Code/moonshiner/lib/test.js:134:37)\n"}
+{"stdout":"        at async TestSuite.emit (file:///Users/wil/Code/moonshiner/lib/test.js:137:19)\n"}
+{"stdout":"        at async file:///Users/wil/Code/moonshiner/lib/plugin/server.js:123:9\n"}
+{"stdout":"        at async Connection.trigger (file:///Users/wil/Code/moonshiner/lib/connection.js:118:14)\u001b[22m\n"}
+{"stdout":"\n"}
+{"stdout":"🏁 \u001b[37mSummary\u001b[39m\n"}
+{"stdout":"\n"}
+{"stdout":"  ✅ \u001b[32m5 passing\u001b[39m\u001b[2m (2.8s)\u001b[22m\n"}
+{"stdout":"  💤 \u001b[34m1 skipped\u001b[39m\n"}
+{"stdout":"  ❌ \u001b[31m1 failing\u001b[39m\n"}
+{"stdout":"\n"}
