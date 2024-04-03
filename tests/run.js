@@ -56,6 +56,8 @@ describe('Moonshiner', { timeout: 0 }, () => {
   });
 
   test('browser tests', async () => {
-    await runTests('tests/browser.test.js');
+    await runTests('tests/browser.test.js', {
+      expectExitCode: 1
+    });
   });
 });
