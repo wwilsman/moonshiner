@@ -60,4 +60,8 @@ describe('Moonshiner', { timeout: 0 }, () => {
       expectExitCode: 1
     });
   });
+
+  test('dot reporter', async () => {
+    await runTests('tests/dot.test.js');
+  });
 });
