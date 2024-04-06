@@ -1,0 +1,40 @@
+{"stdout":"TAP version 13\n"}
+{"stdout":"# Subtest: should run first\n"}
+{"stdout":"ok 1 - should run first\n"}
+{"stdout":"  ---\n"}
+{"stdout":"  duration: 2.318\n"}
+{"stdout":"  ...\n"}
+{"stdout":"# Subtest: within a suite\n"}
+{"stdout":"  # Subtest: should run second\n"}
+{"stdout":"  ok 1 - should run second\n"}
+{"stdout":"    ---\n"}
+{"stdout":"    duration: 2.146\n"}
+{"stdout":"    ...\n"}
+{"stdout":"  # Subtest: within a nested suite\n"}
+{"stdout":"    # Subtest: should run third\n"}
+{"stdout":"      # Subtest: should run fourth\n"}
+{"stdout":"      ok 1 - should run fourth\n"}
+{"stdout":"        ---\n"}
+{"stdout":"        duration: 1.115\n"}
+{"stdout":"        ...\n"}
+{"stdout":"      1..1\n"}
+{"stdout":"    ok 1 - should run third\n"}
+{"stdout":"      ---\n"}
+{"stdout":"      duration: 3.062\n"}
+{"stdout":"      ...\n"}
+{"stdout":"    1..1\n"}
+{"stdout":"  ok 2 - within a nested suite\n"}
+{"stdout":"    ---\n"}
+{"stdout":"    duration: 3.781\n"}
+{"stdout":"    ...\n"}
+{"stdout":"  1..2\n"}
+{"stdout":"ok 2 - within a suite\n"}
+{"stdout":"  ---\n"}
+{"stdout":"  duration: 7.800\n"}
+{"stdout":"  ...\n"}
+{"stdout":"# Subtest: should run fifth\n"}
+{"stdout":"ok 3 - should run fifth\n"}
+{"stdout":"  ---\n"}
+{"stdout":"  duration: 0.967\n"}
+{"stdout":"  ...\n"}
+{"stdout":"1..3\n"}

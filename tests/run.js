@@ -64,4 +64,8 @@ describe('Moonshiner', { timeout: 0 }, () => {
   test('dot reporter', async () => {
     await runTests('tests/dot.test.js');
   });
+
+  test('tap reporter', async () => {
+    await runTests('tests/tap.test.js');
+  });
 });
