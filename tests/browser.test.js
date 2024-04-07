@@ -2,7 +2,7 @@ import { describe, it, configure } from '../lib/harness.node.js';
 
 describe('merges unique tests', () => {
   it('reports once', () => {
-    console.log('[process] running');
+    console.log('running');
   });
 });
 
@@ -34,12 +34,11 @@ configure({
           <script type="module">
             import { describe, it } from '/lib/harness.js';
 
-            it('runs from the browser', () => {
-              console.log('running');
-            });
-
             describe('merges unique tests', () => {
-              it('reports once', () => {});
+              it('reports once', () => {
+                console.log('running');
+              });
+
               it('reports skipped');
 
               it('takes a screenshot', async t => {
