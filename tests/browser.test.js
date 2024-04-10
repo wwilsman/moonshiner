@@ -1,4 +1,4 @@
-import { describe, it, configure } from '../lib/harness.node.js';
+import { describe, it, configure } from 'moonshiner';
 
 describe('merges unique tests', () => {
   it('reports once', () => {

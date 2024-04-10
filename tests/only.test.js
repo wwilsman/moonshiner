@@ -1,4 +1,4 @@
-import { describe, test } from '../lib/harness.js';
+import { describe, test } from 'moonshiner';
 
 describe('should run', () => {
   test('should not run', () => {
@@ -16,7 +16,7 @@ describe('should run', () => {
   describe.only('should run these too', () => {
     test('should run second', () => {});
 
-    test.only('should run third', async t => {
+    test('should run third', async t => {
       await t.test('should run fourth', { only: true }, () => {});
 
       await t.test('should not run subtest', () => {

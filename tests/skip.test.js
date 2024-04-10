@@ -1,4 +1,4 @@
-import { describe, test } from '../lib/harness.js';
+import { describe, test } from 'moonshiner';
 
 describe('should run', () => {
   test('should run first', () => {

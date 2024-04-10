@@ -1,4 +1,4 @@
-import { configure } from '../lib/harness.js';
+import { configure } from 'moonshiner';
 
 import './harness.test.js';
 

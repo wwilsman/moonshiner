@@ -1,5 +1,5 @@
 import { fork } from 'node:child_process';
-import { configure } from '../lib/harness.node.js';
+import { configure } from 'moonshiner';
 
 import './harness.test.js';
 

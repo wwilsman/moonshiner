@@ -9,7 +9,7 @@ import {
   beforeEach,
   after,
   afterEach
-} from '../lib/harness.js';
+} from 'moonshiner';
 
 const results = {};
 const count = k => (results[k] = (results[k] ?? 0) + 1);
