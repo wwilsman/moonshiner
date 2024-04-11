@@ -1,7 +1,6 @@
 import { configure } from 'moonshiner';
 
-import './harness.test.js';
-
 configure({
+  require: './tests/harness.test.js',
   reporter: 'dot'
 });
