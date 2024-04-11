@@ -49,6 +49,11 @@ configure({
                 await t.screenshot('takes a screenshot');
               });
 
+              it('should fail for changed screenshot', async t => {
+                document.getElementById('test').innerHTML = Math.random();
+                await t.screenshot();
+              });
+
               it(sessionStorage.getItem('__MOONSHINER_REMOTE__'), () => {});
             });
 
