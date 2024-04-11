@@ -27,6 +27,10 @@
       "default": "./lib/plugin/*.js"
     }
   },
+  "bin": {
+    "moonshiner": "bin/moonshiner",
+    "test": "bin/moonshiner"
+  },
   "scripts": {
     "lint": "eslint --ignore-path .gitignore ."
   },
