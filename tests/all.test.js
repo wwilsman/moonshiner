@@ -1,5 +1,5 @@
 import { describe, test } from '../lib/harness.js';
-import { testFork } from './helpers.js';
+import { testFork, testSpawn } from './helpers.js';
 
 describe('Moonshiner', { timeout: 0 }, () => {
   test('test harness', async () => {
@@ -30,5 +30,9 @@ describe('Moonshiner', { timeout: 0 }, () => {
 
   test('tap reporter', async () => {
     await testFork('tests/tap.test.js');
+  });
+
+  test('cli command', async () => {
+    await testSpawn(['bin/moonshiner']);
   });
 });
