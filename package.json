@@ -32,7 +32,8 @@
     "test": "bin/moonshiner"
   },
   "scripts": {
-    "lint": "eslint --ignore-path .gitignore ."
+    "lint": "eslint --ignore-path .gitignore .",
+    "test": "node tests/all.test.js"
   },
   "dependencies": {
     "cross-spawn": "^7.0.3",
