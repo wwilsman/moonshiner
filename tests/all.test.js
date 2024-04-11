@@ -20,7 +20,12 @@ describe('Moonshiner', { timeout: 0 }, () => {
 
   test('browser tests', async () => {
     await testFork('tests/browser.test.js', {
-      expectExitCode: 1
+      expectExitCode: 1,
+      transformOutput: line => line
+        .replace(
+          /ws:\/\/localhost:(\d+)\/(.+)?\/?/,
+          'ws://localhost:<port>/<remote_id>')
+        .replace(/\d+\.\d{1,3}/, '<ms>')
     });
   });
 
@@ -29,7 +34,10 @@ describe('Moonshiner', { timeout: 0 }, () => {
   });
 
   test('tap reporter', async () => {
-    await testFork('tests/tap.test.js');
+    await testFork('tests/tap.test.js', {
+      transformOutput: line => line
+        .replace(/\d+\.\d{1,3}/, '<ms>')
+    });
   });
 
   test('cli command', async () => {

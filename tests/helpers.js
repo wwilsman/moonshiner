@@ -12,16 +12,21 @@ await mkdir(snapshotDirectory, { recursive: true });
 
 export async function testProcess(proc, {
   snapshotName,
-  expectExitCode = 0
+  expectExitCode = 0,
+  transformOutput = l => l
 } = {}) {
   let snapshot = join(snapshotDirectory, snapshotName);
   let deferred = new DeferredPromise();
   let output = [];
 
-  proc.stdout.on('data', chunk => output.push(...(
-    chunk.toString().split(/(?<=\n)/).map(stdout => ({ stdout })))));
-  proc.stderr.on('data', chunk => output.push(...(
-    chunk.toString().split(/(?<=\n)/).map(stderr => ({ stderr })))));
+  let push = (type, chunk) => output.push(...(
+    chunk.toString().split(/(?<=\n)/).map(line => ({
+      [type]: transformOutput(line)
+    }))
+  ));
+
+  proc.stdout.on('data', chunk => push('stdout', chunk));
+  proc.stderr.on('data', chunk => push('stderr', chunk));
   proc.on('error', deferred.reject);
   proc.on('exit', deferred.resolve);
 
