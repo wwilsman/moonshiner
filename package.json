@@ -33,6 +33,7 @@
   },
   "scripts": {
     "lint": "eslint --ignore-path .gitignore .",
+    "test:coverage": "c8 npm run test",
     "test": "node tests/all.test.js"
   },
   "dependencies": {
@@ -46,6 +47,7 @@
     "ws": "^8.13.0"
   },
   "devDependencies": {
+    "c8": "^9.1.0",
     "eslint": "^8.43.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.27.5",

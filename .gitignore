@@ -1,5 +1,6 @@
 .DS_Store
 .local-chrome
 .local-firefox
+coverage
 node_modules
 *.lock
