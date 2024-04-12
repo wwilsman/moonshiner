@@ -1,4 +1,4 @@
-import { describe, it, configure } from 'moonshiner';
+import { describe, it, after, configure } from 'moonshiner';
 
 describe('merges unique tests', () => {
   it('reports once', () => {
@@ -66,4 +66,12 @@ configure({
         </html>`
     }]
   }
+});
+
+after(async () => {
+  let { unlink } = await import('fs/promises');
+  let screenshot = 'should fail for changed screenshot.new.png';
+
+  for (let browser of ['Firefox', 'Chrome', 'Chrome (mobile)'])
+    await unlink(`./tests/__screenshots__/${browser}/${screenshot}`);
 });
