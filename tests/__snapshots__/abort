@@ -1,0 +1,37 @@
+{"stdout":"\n"}
+{"stdout":"🚀 \u001b[37mRunning tests\u001b[39m\n"}
+{"stdout":"\n"}
+{"stdout":"  \u001b[37mabort\u001b[39m\n"}
+{"stdout":"    ✅ \u001b[32mshould run\u001b[39m\n"}
+{"stdout":"      \u001b[2m[LOG]\u001b[22m beforeEach abort\n"}
+{"stdout":"      \u001b[2m[LOG]\u001b[22m afterEach abort\n"}
+{"stdout":"\n"}
+{"stdout":"    \u001b[37mshould run\u001b[39m\n"}
+{"stdout":"      ❌ \u001b[31mshould abort\u001b[39m\n"}
+{"stdout":"        \u001b[2m[LOG]\u001b[22m beforeEach abort\n"}
+{"stdout":"        \u001b[2m[LOG]\u001b[22m afterEach abort\n"}
+{"stdout":"after nested should run\n"}
+{"stdout":"after abort\n"}
+{"stdout":"\n"}
+{"stdout":"❌ \u001b[31mFailed\u001b[39m\n"}
+{"stdout":"\n"}
+{"stdout":"  \u001b[37mabort\u001b[39m\n"}
+{"stdout":"    \u001b[37mshould run\u001b[39m\n"}
+{"stdout":"      \u001b[31mshould abort\u001b[39m\n"}
+{"stdout":"        AbortError: This operation was aborted\n"}
+{"stdout":"        \u001b[2m  at new DOMException (node:internal/per_context/domexception:53:5)\u001b[22m\n"}
+{"stdout":"        \u001b[2m  at AbortController.abort (node:internal/abort_controller:395:18)\u001b[22m\n"}
+{"stdout":"        \u001b[2m  at TestRunner.abort (file:///Users/wil/Code/moonshiner/lib/runner.js:54:39)\u001b[22m\n"}
+{"stdout":"        \u001b[2m  at TestSuite.abort (file:///Users/wil/Code/moonshiner/lib/test.js:149:25)\u001b[22m\n"}
+{"stdout":"        \u001b[2m  at abort (file:///Users/wil/Code/moonshiner/lib/harness.js:97:15)\u001b[22m\n"}
+{"stdout":"        \u001b[2m  at Proxy.<anonymous> (file:///Users/wil/Code/moonshiner/tests/abort.test.js:24:7)\u001b[22m\n"}
+{"stdout":"        \u001b[2m  at apply (file:///Users/wil/Code/moonshiner/lib/harness.js:44:25)\u001b[22m\n"}
+{"stdout":"        \u001b[2m  at Proxy.<anonymous> (file:///Users/wil/Code/moonshiner/lib/harness.js:38:32)\u001b[22m\n"}
+{"stdout":"        \u001b[2m  at file:///Users/wil/Code/moonshiner/lib/runner.js:143:27\u001b[22m\n"}
+{"stdout":"        \u001b[2m  at async #raceTimeout (file:///Users/wil/Code/moonshiner/lib/runner.js:140:12)\u001b[22m\n"}
+{"stdout":"\n"}
+{"stdout":"🏁 \u001b[37mSummary\u001b[39m\n"}
+{"stdout":"\n"}
+{"stdout":"  ✅ \u001b[32m1 passing\u001b[39m\n"}
+{"stdout":"  ❌ \u001b[31m1 failing\u001b[39m\n"}
+{"stdout":"\n"}
