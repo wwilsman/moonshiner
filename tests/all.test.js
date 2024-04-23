@@ -23,9 +23,14 @@ describe('Moonshiner', { timeout: 0 }, () => {
       expectExitCode: 1,
       transformOutput: line => line
         .replace(
+          /(Screenshot .* failed for) (.*)/,
+          '$1 <browser>')
+        .replace(
           /ws:\/\/localhost:(\d+)\/(.+)?\/?/,
           'ws://localhost:<port>/<remote_id>')
-        .replace(/\d+\.\d{1,3}/, '<ms>')
+        .replace(
+          /\d+\.\d{1,3}/,
+          '<ms>')
     });
   });
 
@@ -36,7 +41,9 @@ describe('Moonshiner', { timeout: 0 }, () => {
   test('tap reporter', async () => {
     await testFork('tests/tap.test.js', {
       transformOutput: line => line
-        .replace(/\d+\.\d{1,3}/, '<ms>')
+        .replace(
+          /\d+\.\d{1,3}/,
+          '<ms>')
     });
   });
 
