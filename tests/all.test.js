@@ -24,6 +24,10 @@ describe('Moonshiner', { timeout: 0 }, () => {
     await testFork('tests/remote.test.js');
   });
 
+  test('remote isolated tests', async () => {
+    await testFork('tests/remote.only.test.js');
+  });
+
   test('browser tests', async () => {
     await testFork('tests/browser.test.js', {
       expectExitCode: 1,
