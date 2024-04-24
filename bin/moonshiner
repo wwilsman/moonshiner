@@ -2,29 +2,10 @@
 
 import { configure } from 'moonshiner';
 
-const possibleConfigFiles = [
-  'moonshiner.js',
-  'moonshiner.mjs',
-  'moonshiner.cjs',
-  'moonshiner.json',
-  'moonshiner.yml',
-  'moonshiner.yaml',
-  'moonshiner.config.js',
-  'moonshiner.config.mjs',
-  'moonshiner.config.cjs',
-  'moonshiner.config.json',
-  'moonshiner.config.yml',
-  'moonshiner.config.yaml',
-  'test.config.js',
-  'test.config.mjs',
-  'test.config.cjs',
-  'test.config.json',
-  'test.config.yml',
-  'test.config.yaml'
-];
-
 configure({
-  config: ['test', 'tests'].reduce((possiblePaths, dir) => (
-    possiblePaths.concat(possibleConfigFiles.map(file => `${dir}/${file}`))
-  ), [...possibleConfigFiles]).concat(undefined)
+  config: [
+    './{tests/,test/,}' +
+      '{moonshiner,test}.config.' +
+      '{js,mjs,cjs,json,yml,yaml}',
+    false]
 });
