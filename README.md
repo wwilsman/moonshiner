@@ -6,8 +6,11 @@ High-proof testing
 
 [Installation](#installation) •
 [Writing tests](#writing-tests) •
+[Running tests](#running-tests) •
+[Configuring tests](#configuring-tests) •
 [Browser tests](#browser-tests) •
-[Visual tests](#visual-tests)
+[Visual tests](#visual-tests) •
+[Plugins](#plugins)
 
 </div>
 
@@ -22,10 +25,10 @@ $ npm install --save-dev moonshiner
 Write tests by importing and using familiar test methods:
 
 ``` javascript
-// tests/test.js
+// ./tests/test.js
 import { describe, it } from 'moonshiner';
 
-describe('My tests', () => {
+describe('my tests', () => {
   it('passes', () => {
     assert.ok(true)
   });
@@ -36,22 +39,22 @@ describe('My tests', () => {
 });
 ```
 
-### Running tests
+## Running tests
 
 Run tests by executing your test script with Node:
 
 ``` shell
-$ node tests/test.js
+$ node ./tests/test.js
 
 🚀 Running tests
 
-  My tests
+  my tests
     ✅ passes
     ❌ fails
 
 ❌ Failed:
 
-  My tests
+  my tests
     fails
       AssertionError: The expression evaluated to a falsy value:
 
@@ -64,48 +67,142 @@ $ node tests/test.js
 
 ```
 
-## Browser tests
+Tests can also be run using the `moonshiner` CLI:
 
-Moonshiner tests are isomorphic and can run in both Node and Browser environments. Moonshiner also
-features the ability to automatically launch browsers and serve files. This is done using the
-`configure` function from within a Node test script.
+``` shell
+$ npx moonshiner --require ./tests/test.js
+```
+
+## Configuring tests
+
+Tests can be configured by providing an `options` argument to tests, suites, or hooks:
+
+``` typescript
+// describe
+function describe(name: string, options?: TestOptions, fn?: TestSuiteFn): void;
+function describe(name: string, fn: TestSuiteFn, options?: TestOptions): void;
+
+// test, it
+function test(name: string, options?: TestOptions, fn?: TestFn): void;
+function test(name: string, fn: TestFn, options?: TestOptions): void;
+
+// before, beforeEach, after, afterEach
+function hook(options: TestOptions, fn: TestFn): void;
+function hook(fn: TestFn, options?: TestOptions): void;
+
+// shared options
+type TestOptions = {
+  timeout?: number,
+  skip?: boolean,
+  only?: boolean
+};
+```
+
+Tests can also be configured with specific test methods:
 
 ``` javascript
-// tests/run.js
+test.only('isolated test', () => {/* ... */});
+test.skip('skipped test', () => {/* ... */});
+
+test('test timeout', t => {
+  // will reset the active timeout
+  t.timeout(10_000);
+  // ...
+});
+```
+
+The test root, which all other tests decend from, can be configured by importing and using the
+`configure()` method:
+
+``` javascript
 import { configure } from 'moonshiner';
 
 configure({
-  // launch Google Chrome
-  browser: 'Chrome',
-  // serve the current working directory at /
-  server: {
-    serve: ['.']
+  timeout: 10_000,
+  // automatically require these test files
+  require: './tests/**/*.test.js'
+});
+```
+
+The test root can also be configured by providing flags to the `moonshiner` CLI:
+
+``` shell
+$ npx moonshiner --timeout 10000 --require ./tests/**/*.test.js
+```
+
+Moonshiner's CLI will also load the first config file found matching the following conditions:
+
+- is named  `moonshiner.config.*` or `test.config.*`
+- is located in `tests`, `test`, or the current working directory
+- is formatted as `.js`, `.mjs`, `.cjs`, `.json`, `.yml`, or `.yaml`
+
+A config file may also be provided to the CLI using the `--config` flag, or to the `configure()`
+method using the `config` option.
+
+### Reporters
+
+Moonshiner comes with several built-in reporters, and uses the `spec` reporter by default. Reporters
+can be specified and configured with the `reporter` or `reporters` option.
+
+- `spec` - outputs test results in a human-readable format
+- `dot` - outputs test results in a compact format
+- `summary` - outputs test results as a summary
+- `tap` - outputs test results in a TAP format
+- `junit` - outputs test results in a jUnit XML format
+
+Custom reporters can be defined by extending the base reporter class, or by providing a generator
+function:
+
+``` javascript
+configure({
+  reporter: function* myReporter(events) {
+    for await (let { type, data } of events) {
+      switch (type) {
+        case 'test:pass':
+          yield `pass: ${data.test.name}\n`;
+          break;
+        case 'test:fail':
+          yield `fail: ${data.test.name}\n`;
+          break;
+        case 'test:end':
+          yield '\n\n';
+          yield `passing: ${data.total.passing}\n`;
+          yield `failing: ${data.total.failing}\n`;
+          break;
+      }
+    }
   }
 });
 ```
 
-The server `serve` option may also specify virtual files to serve that don't actually exist
-locally. This can be used to create a virtual index for our browser tests.
+## Browser tests
 
-``` javascript
-// ...
-  server: {
-    serve: ['.', {
-      '/index.html': `
-        <!doctype html>
-        <html lang="en">
-        <body>
-          <script type="module" src="/test.js"></script>
-        </body>
-        </html>`,
-    }]
-  }
-// ...
+Moonshiner tests are isomorphic and can run in both Node and Browser environments. Moonshiner can
+also launch browsers and serve files from Node environments if configured to do so:
+
+``` yaml
+browser: chrome # launch a chrome browser
+serve: ./       # serve the current working directory
 ```
 
-Now when we run this new test script, Moonshiner will automatically start a server and launch a
-headless browser before running any tests. As tests in the browser are run, they are also reported
-upstream with any Node tests.
+The `serve` option may also specify virtual files that don't actually exist locally. This can be
+used to create a virtual index for our browser tests:
+
+``` yaml
+browser: chrome
+serve:
+  - ./
+  - /index.html: |
+      <!doctype html>
+      <html lang="en">
+      <body>
+        <script type="module" src="/test.js"></script>
+      </body>
+      </html>
+```
+
+Now when we run Moonshier, it will automatically start a server and launch a headless browser before
+running any tests. As tests in the browser run, they will report upstream with any Node tests.
 
 ### Frameworks and bundlers
 
@@ -158,13 +255,11 @@ const bundle = await bundler.generate({ output: 'esm' });
 
 configure({
   browser: 'Chrome',
-  server: {
-    // transform bundle output into a format expected by `serve`
-    serve: [bundle.output.reduce((files, f) => {
-      files[`/${f.fileName}`] = f.code ?? f.source;
-      return files;
-    }, {})]
-  }
+  // transform bundle output into a format expected by `serve`
+  serve: bundle.output.reduce((files, f) => {
+    files[`/${f.fileName}`] = f.code ?? f.source;
+    return files;
+  }, {})
 });
 
 // manually run tests
@@ -181,8 +276,8 @@ the screenshot name. If a screenshot already exists and it does not match the ne
 new screenshot is saved beside the existing one and a test error is raised.
 
 By default, screenshots are compared using strict equality of their base64 contents. A custom
-screenshot `compare()` method can be configured to compare screenshots using other methods. The
-example below uses [odiff](https://github.com/dmtrKovalenko/odiff), a pixel differencing tool.
+screenshot `compare()` option can be configured to compare screenshots using other methods. The
+example below uses [odiff](https://github.com/dmtrKovalenko/odiff), a pixel differencing tool:
 
 ``` javascript
 // tests/run.js
@@ -194,10 +289,8 @@ configure({
   screenshots: {
     /** optional path where screenshots will be saved */
     // directory: '__screenshots__',
-    /** optional custom suffix used for new screenshots */
-    // newSuffix: '.new'
-    /** optional custom suffix used for diff images */
-    // newSuffix: '.diff'
+    /** optional custom suffixes used for new screenshot and diff filenames */
+    // suffix: { new: '.new', diff: '.diff' },
     /** optional screenshot comparison function */
     async compare(baseline, comparison, diff) {
       // accepts image paths to compare, producing a diff image if not matching
@@ -218,4 +311,4 @@ image is removed before comparing new screenshots.
 
 ## Still brewing
 
-Planned features are still coming soon, such as additional reporters, a CLI, and more!
+Planned features are still coming soon, such as additional reporters, plugins, and more!
