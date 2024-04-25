@@ -44,6 +44,12 @@ describe('Moonshiner', { timeout: 0 }, () => {
     });
   });
 
+  test('browser abort tests', async () => {
+    await testFork('tests/browser.abort.test.js', {
+      expectExitCode: 1
+    });
+  });
+
   test('dot reporter', async () => {
     await testFork('tests/dot.test.js');
   });
