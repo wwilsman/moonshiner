@@ -16,7 +16,7 @@ describe('abort', () => {
 
   it('should run', () => {});
 
-  describe('should run', () => {
+  describe('nested', () => {
     before(t => console.log('before nested', t.name));
     after(t => console.log('after nested', t.name));
 
