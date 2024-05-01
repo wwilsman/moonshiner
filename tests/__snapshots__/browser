@@ -27,13 +27,13 @@
 {"stdout":"      \u001b[2m  at file:///Users/wil/Code/moonshiner/lib/plugin/screenshot.js:63:34\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:29:28)\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:35:34)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:38:19)\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/test.js:64:12)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async file:///Users/wil/Code/moonshiner/lib/browser/base.js:133:11\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async file:///Users/wil/Code/moonshiner/lib/browser/base.js:137:11\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:29:22)\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:35:28)\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:38:19)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/test.js:64:12)\u001b[22m\n"}
 {"stdout":"\n"}
 {"stdout":"  \u001b[37mmerges unique tests\u001b[39m\n"}
 {"stdout":"    \u001b[31mshould fail for changed screenshot\u001b[39m\n"}
@@ -43,7 +43,7 @@
 {"stdout":"      \u001b[2m  at async trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:35:28)\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:38:19)\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/test.js:64:12)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async file:///Users/wil/Code/moonshiner/lib/browser/base.js:133:11\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async file:///Users/wil/Code/moonshiner/lib/browser/base.js:137:11\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:29:22)\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:35:28)\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:38:19)\u001b[22m\n"}
