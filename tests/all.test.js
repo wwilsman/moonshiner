@@ -46,7 +46,11 @@ describe('Moonshiner', { timeout: 0 }, () => {
 
   test('browser abort tests', async () => {
     await testFork('tests/browser.abort.test.js', {
-      expectExitCode: 1
+      expectExitCode: 1,
+      transformOutput: line => line
+        .replace(
+          /\d+\.\d{1,3}/,
+          '<ms>')
     });
   });
 
