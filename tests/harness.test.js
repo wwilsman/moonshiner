@@ -69,7 +69,7 @@ describe('within a suite', () => {
     });
   });
 
-  test('should run second', async () => {
+  test('should run second', () => {
     count('didRunTest');
     assert.deepEqual(results, {
       didRunRootBefore: 1,
