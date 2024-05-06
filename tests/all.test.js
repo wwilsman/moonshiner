@@ -1,4 +1,4 @@
-import { describe, test } from '../lib/harness.js';
+import { describe, test } from 'moonshiner';
 import { testFork, testSpawn } from './helpers.js';
 
 describe('Moonshiner', { timeout: 0 }, () => {
@@ -36,8 +36,11 @@ describe('Moonshiner', { timeout: 0 }, () => {
           /(Screenshot .* failed for) (.*)/,
           '$1 <browser>')
         .replace(
-          /ws:\/\/localhost:(\d+)\/(.+)?\/?/,
+          /ws:\/\/localhost:(\d+)\/(.+)\/?/,
           'ws://localhost:<port>/<remote_id>')
+        .replace(
+          /localhost:(\d+)/,
+          'localhost:<port>')
         .replace(
           /\d+\.\d{1,3}/,
           '<ms>')
@@ -48,6 +51,9 @@ describe('Moonshiner', { timeout: 0 }, () => {
     await testFork('tests/browser.abort.test.js', {
       expectExitCode: 1,
       transformOutput: line => line
+        .replace(
+          /localhost:(\d+)/,
+          'localhost:<port>')
         .replace(
           /\d+\.\d{1,3}/,
           '<ms>')
