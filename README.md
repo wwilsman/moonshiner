@@ -141,14 +141,14 @@ method using the `config` option.
 
 ### Reporters
 
-Moonshiner comes with several built-in reporters, and uses the `spec` reporter by default. Reporters
-can be specified and configured with the `reporter` or `reporters` option.
+Moonshiner comes with several built-in reporters, and uses the `spec` and `summary` reporters by
+default. Reporters can be specified and configured with the `reporter` or `reporters` option.
 
 - `spec` - outputs test results in a human-readable format
-- `dot` - outputs test results in a compact format
 - `summary` - outputs test results as a summary
+- `dot` - outputs test results in a compact format
 - `tap` - outputs test results in a TAP format
-- `junit` - outputs test results in a jUnit XML format
+- `junit` - outputs test results in a jUnit XML format (coming soon)
 
 Custom reporters can be defined by extending the base reporter class, or by providing a generator
 function:
