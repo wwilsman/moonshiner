@@ -19,12 +19,13 @@
 {"stdout":"    ✅ \u001b[32mws://localhost:<port>/<remote_id>\n"}
 {"stdout":"    ✅ \u001b[32mws://localhost:<port>/<remote_id>\n"}
 {"stdout":"\n"}
+{"stdout":"\n"}
 {"stdout":"❌ \u001b[31mFailed\u001b[39m\n"}
 {"stdout":"\n"}
 {"stdout":"  \u001b[37mmerges unique tests\u001b[39m\n"}
 {"stdout":"    \u001b[31mshould fail for existing screenshot\u001b[39m\n"}
 {"stdout":"      Error: Duplicate screenshot name\n"}
-{"stdout":"      \u001b[2m  at file:///Users/wil/Code/moonshiner/lib/plugin/screenshot.js:63:34\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at file:///Users/wil/Code/moonshiner/lib/plugin/screenshot.js:68:34\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:29:28)\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:35:34)\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:38:19)\u001b[22m\n"}
@@ -35,10 +36,11 @@
 {"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:38:19)\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/test.js:64:12)\u001b[22m\n"}
 {"stdout":"\n"}
+{"stdout":"\n"}
 {"stdout":"  \u001b[37mmerges unique tests\u001b[39m\n"}
 {"stdout":"    \u001b[31mshould fail for changed screenshot\u001b[39m\n"}
 {"stdout":"      Error: Screenshot comparison failed for <browser>\n"}
-{"stdout":"      \u001b[2m  at file:///Users/wil/Code/moonshiner/lib/plugin/screenshot.js:88:17\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at file:///Users/wil/Code/moonshiner/lib/plugin/screenshot.js:93:17\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:29:22)\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:35:28)\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:38:19)\u001b[22m\n"}
@@ -48,6 +50,7 @@
 {"stdout":"      \u001b[2m  at async trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:35:28)\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:38:19)\u001b[22m\n"}
 {"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/test.js:64:12)\u001b[22m\n"}
+{"stdout":"\n"}
 {"stdout":"\n"}
 {"stdout":"🏁 \u001b[37mSummary\u001b[39m\n"}
 {"stdout":"\n"}

@@ -16,6 +16,7 @@
 {"stdout":"      \u001b[37mexcept for one of these\u001b[39m\n"}
 {"stdout":"        ✅ \u001b[32mshould run sixth\u001b[39m\n"}
 {"stdout":"\n"}
+{"stdout":"\n"}
 {"stdout":"🏁 \u001b[37mSummary\u001b[39m\n"}
 {"stdout":"\n"}
 {"stdout":"  ✅ \u001b[32m6 passing\u001b[39m\n"}

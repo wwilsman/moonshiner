@@ -21,6 +21,7 @@
 {"stdout":"      \u001b[37mor this one\u001b[39m\n"}
 {"stdout":"        💤 \u001b[34mshould not run this one\u001b[39m\n"}
 {"stdout":"\n"}
+{"stdout":"\n"}
 {"stdout":"🏁 \u001b[37mSummary\u001b[39m\n"}
 {"stdout":"\n"}
 {"stdout":"  ✅ \u001b[32m4 passing\u001b[39m\n"}
