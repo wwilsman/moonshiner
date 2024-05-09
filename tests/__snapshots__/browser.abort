@@ -21,7 +21,7 @@
 {"stdout":"      \u001b[31mshould abort\u001b[39m\n"}
 {"stdout":"        AbortError: Test aborted\n"}
 {"stdout":"        \u001b[2m  at TestRunner.abort (http://localhost:<port>/lib/runner.js:59:23)\u001b[22m\n"}
-{"stdout":"        \u001b[2m  at TestSuite.abort (http://localhost:<port>/lib/test.js:154:25)\u001b[22m\n"}
+{"stdout":"        \u001b[2m  at TestSuite.abort (http://localhost:<port>/lib/test.js:156:25)\u001b[22m\n"}
 {"stdout":"        \u001b[2m  at abort (http://localhost:<port>/lib/harness.js:97:15)\u001b[22m\n"}
 {"stdout":"        \u001b[2m  at Proxy.<anonymous> (http://localhost:<port>/tests/abort.test.js:24:7)\u001b[22m\n"}
 {"stdout":"        \u001b[2m  at apply (http://localhost:<port>/lib/harness.js:44:25)\u001b[22m\n"}
