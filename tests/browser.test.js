@@ -45,7 +45,10 @@ configure({
             });
 
             it('should fail for existing screenshot', async t => {
-              await t.screenshot('merges unique tests | takes a screenshot');
+              await t.screenshot({
+                prefix: 'merges unique tests',
+                name: 'takes a screenshot'
+              });
             });
 
             it('should fail for changed screenshot', async t => {
