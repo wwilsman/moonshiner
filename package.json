@@ -32,7 +32,7 @@
     "test": "bin/moonshiner"
   },
   "scripts": {
-    "lint": "eslint --ignore-path .gitignore .",
+    "lint": "eslint .",
     "test:coverage": "c8 npm run test",
     "test": "node tests/all.test.js"
   },
@@ -48,10 +48,8 @@
   },
   "devDependencies": {
     "c8": "^10.1.2",
-    "eslint": "^8.57.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^16.0.0",
-    "eslint-plugin-promise": "^6.2.0"
+    "eslint": "^9.5.0",
+    "globals": "^15.5.0",
+    "neostandard": "^0.7.0"
   }
 }
