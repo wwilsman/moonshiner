@@ -26,7 +26,7 @@
 {"stdout":"        \u001b[2m  at Proxy.<anonymous> (http://localhost:<port>/tests/abort.test.js:24:7)\u001b[22m\n"}
 {"stdout":"        \u001b[2m  at apply (http://localhost:<port>/lib/harness.js:44:25)\u001b[22m\n"}
 {"stdout":"        \u001b[2m  at Proxy.<anonymous> (http://localhost:<port>/lib/harness.js:38:32)\u001b[22m\n"}
-{"stdout":"        \u001b[2m  at http://localhost:<port>/lib/runner.js:172:22\u001b[22m\n"}
+{"stdout":"        \u001b[2m  at http://localhost:<port>/lib/runner.js:179:22\u001b[22m\n"}
 {"stdout":"\n"}
 {"stdout":"\n"}
 {"stdout":"🏁 \u001b[37mSummary\u001b[39m\n"}

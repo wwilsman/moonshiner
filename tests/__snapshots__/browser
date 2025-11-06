@@ -24,32 +24,31 @@
 {"stdout":"\n"}
 {"stdout":"  \u001b[37mmerges unique tests\u001b[39m\n"}
 {"stdout":"    \u001b[31mshould fail for existing screenshot\u001b[39m\n"}
-{"stdout":"      Error: Duplicate screenshot name\n"}
-{"stdout":"      \u001b[2m  at file:///Users/wil/Code/moonshiner/lib/plugin/screenshot.js:80:34\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:29:28)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:35:34)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:38:19)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/test.js:66:12)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async file:///Users/wil/Code/moonshiner/lib/browser/base.js:148:11\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:29:22)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:35:28)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:38:19)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/test.js:66:12)\u001b[22m\n"}
-{"stdout":"\n"}
+{"stdout":"      Error: Duplicate screenshot name: merges unique tests | takes a screenshot\n"}
+{"stdout":"      \u001b[2m  at file://<cwd>/lib/plugin/screenshot.js:81:34\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at trigger (file://<cwd>/lib/util/event.js:29:28)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at trigger (file://<cwd>/lib/util/event.js:35:34)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async TestSuite.trigger (file://<cwd>/lib/util/event.js:38:19)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async TestSuite.trigger (file://<cwd>/lib/test.js:66:12)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async file://<cwd>/lib/browser/base.js:154:11\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async trigger (file://<cwd>/lib/util/event.js:29:22)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async trigger (file://<cwd>/lib/util/event.js:35:28)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async TestSuite.trigger (file://<cwd>/lib/util/event.js:38:19)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async TestSuite.trigger (file://<cwd>/lib/test.js:66:12)\u001b[22m\n"}
 {"stdout":"\n"}
 {"stdout":"  \u001b[37mmerges unique tests\u001b[39m\n"}
 {"stdout":"    \u001b[31mshould fail for changed screenshot\u001b[39m\n"}
 {"stdout":"      Error: Screenshot comparison failed for <browser>\n"}
-{"stdout":"      \u001b[2m  at file:///Users/wil/Code/moonshiner/lib/plugin/screenshot.js:109:15\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:29:22)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:35:28)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:38:19)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/test.js:66:12)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async file:///Users/wil/Code/moonshiner/lib/browser/base.js:148:11\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:29:22)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:35:28)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/util/event.js:38:19)\u001b[22m\n"}
-{"stdout":"      \u001b[2m  at async TestSuite.trigger (file:///Users/wil/Code/moonshiner/lib/test.js:66:12)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at file://<cwd>/lib/plugin/screenshot.js:108:15\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async trigger (file://<cwd>/lib/util/event.js:29:22)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async trigger (file://<cwd>/lib/util/event.js:35:28)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async TestSuite.trigger (file://<cwd>/lib/util/event.js:38:19)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async TestSuite.trigger (file://<cwd>/lib/test.js:66:12)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async file://<cwd>/lib/browser/base.js:154:11\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async trigger (file://<cwd>/lib/util/event.js:29:22)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async trigger (file://<cwd>/lib/util/event.js:35:28)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async TestSuite.trigger (file://<cwd>/lib/util/event.js:38:19)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async TestSuite.trigger (file://<cwd>/lib/test.js:66:12)\u001b[22m\n"}
 {"stdout":"\n"}
 {"stdout":"\n"}
 {"stdout":"🏁 \u001b[37mSummary\u001b[39m\n"}

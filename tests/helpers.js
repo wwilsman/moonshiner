@@ -10,6 +10,22 @@ const updateSnapshots = process.argv.includes('--update-snapshots');
 const snapshotDirectory = 'tests/__snapshots__';
 await mkdir(snapshotDirectory, { recursive: true });
 
+const normalizeOutput = line => {
+  if (!line) return line;
+
+  let scrubbed = '<cwd>';
+  let cwd = process.cwd();
+  let posix = cwd.replace(/\\/g, '/');
+  let windows = posix.replace(/\//g, '\\');
+  let encoded = encodeURI(posix);
+
+  return line
+    .split(cwd).join(scrubbed)
+    .split(posix).join(scrubbed)
+    .split(windows).join(scrubbed)
+    .split(encoded).join(scrubbed);
+};
+
 export async function testProcess(proc, {
   snapshotName,
   expectExitCode = 0,
@@ -21,7 +37,7 @@ export async function testProcess(proc, {
 
   let push = (type, chunk) => output.push(...(
     chunk.toString().split(/(?<=\n)/).map(line => ({
-      [type]: transformOutput(line)
+      [type]: transformOutput(normalizeOutput(line))
     }))
   ));
 
