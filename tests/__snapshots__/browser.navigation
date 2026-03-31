@@ -1,0 +1,27 @@
+{"stdout":"\n"}
+{"stdout":"🚀 \u001b[37mRunning tests\u001b[39m\n"}
+{"stdout":"\n"}
+{"stdout":"  \u001b[37mnavigation close\u001b[39m\n"}
+{"stdout":"    ❌ \u001b[31mshould abort when navigating away\u001b[39m\n"}
+{"stdout":"\n"}
+{"stdout":"\n"}
+{"stdout":"❌ \u001b[31mFailed\u001b[39m\n"}
+{"stdout":"\n"}
+{"stdout":"  \u001b[37mnavigation close\u001b[39m\n"}
+{"stdout":"    \u001b[31mshould abort when navigating away\u001b[39m\n"}
+{"stdout":"      Error: Remote connection closed unexpectedly\n"}
+{"stdout":"\n"}
+{"stdout":"      Browser navigated to: https://example.com/redirect\n"}
+{"stdout":"\n"}
+{"stdout":"      \u001b[2m  at file://<cwd>/lib/plugin/remote.js:135:37\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at trigger (file://<cwd>/lib/util/event.js:30:28)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at trigger (file://<cwd>/lib/util/event.js:36:34)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async Connection.trigger (file://<cwd>/lib/util/event.js:39:19)\u001b[22m\n"}
+{"stdout":"      \u001b[2m  at async #onclose (file://<cwd>/lib/util/connection.js:93:5)\u001b[22m\n"}
+{"stdout":"\n"}
+{"stdout":"\n"}
+{"stdout":"🏁 \u001b[37mSummary\u001b[39m\n"}
+{"stdout":"\n"}
+{"stdout":"  ✅ \u001b[32m0 passing\u001b[39m\u001b[2m (<ms>s)\u001b[22m\n"}
+{"stdout":"  ❌ \u001b[31m1 failing\u001b[39m\n"}
+{"stdout":"\n"}

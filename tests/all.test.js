@@ -28,6 +28,12 @@ describe('Moonshiner', { timeout: 0 }, () => {
     await testFork('tests/remote.only.test.js');
   });
 
+  test('remote connection close tests', async () => {
+    await testFork('tests/remote.close.test.js', {
+      expectExitCode: 1
+    });
+  });
+
   test('browser tests', async () => {
     await testFork('tests/browser.test.js', {
       expectExitCode: 1,
@@ -49,6 +55,19 @@ describe('Moonshiner', { timeout: 0 }, () => {
 
   test('browser abort tests', async () => {
     await testFork('tests/browser.abort.test.js', {
+      expectExitCode: 1,
+      transformOutput: line => line
+        .replace(
+          /localhost:(\d+)/,
+          'localhost:<port>')
+        .replace(
+          /\d+\.\d{1,3}/,
+          '<ms>')
+    });
+  });
+
+  test('browser navigation tests', async () => {
+    await testFork('tests/browser.navigation.test.js', {
       expectExitCode: 1,
       transformOutput: line => line
         .replace(
