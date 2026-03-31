@@ -25,6 +25,9 @@
     },
     "./plugin/*": {
       "default": "./lib/plugin/*.js"
+    },
+    "./bundler/*": {
+      "default": "./lib/plugin/bundler/*.js"
     }
   },
   "bin": {
@@ -54,9 +57,13 @@
   },
   "peerDependencies": {
     "istanbul-lib-coverage": "^3.0.0",
+    "rollup": "^4.0.0",
   },
   "peerDependenciesMeta": {
     "istanbul-lib-coverage": {
+      "optional": true
+    },
+    "rollup": {
       "optional": true
     }
   }
