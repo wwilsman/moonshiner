@@ -2,11 +2,11 @@ import { fork } from 'node:child_process';
 import { configure } from 'moonshiner';
 
 configure({
-  require: './tests/harness.test.js',
+  require: './tests/shared.harness.test.js',
   plugins: [
     test => test.trigger('remote:connect', {
       remote: () => [1, 2].map(() =>
-        fork('./tests/harness.test.js', {
+        fork('./tests/shared.harness.test.js', {
           env: { __MOONSHINER_REMOTE__: 'process' }
         }))
     })

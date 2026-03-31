@@ -3,7 +3,7 @@ import { testFork, testSpawn } from './helpers.js';
 
 describe('Moonshiner', { timeout: 0 }, () => {
   test('test harness', async () => {
-    await testFork('tests/harness.test.js');
+    await testFork('tests/shared.harness.test.js');
   });
 
   test('isolated tests', async () => {
