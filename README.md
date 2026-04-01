@@ -148,7 +148,38 @@ default. Reporters can be specified and configured with the `reporter` or `repor
 - `summary` - outputs test results as a summary
 - `dot` - outputs test results in a compact format
 - `tap` - outputs test results in a TAP format
+- `html` - generates an interactive HTML dashboard with test results, screenshots, and coverage
 - `junit` - outputs test results in a jUnit XML format (coming soon)
+
+#### HTML Reporter
+
+The HTML reporter generates a comprehensive, interactive dashboard that integrates test results, screenshots, and code coverage into a single hostable report. Features include:
+
+- **Unified dashboard** with recursive drill-down navigation through test suites
+- **Screenshot comparison** with side-by-side baseline, actual, and diff views
+- **Coverage visualization** with detailed metrics from Istanbul-compatible coverage tools
+- **Dark/light/auto theme** with responsive design
+- **Error display** with full stack traces inline with test results
+
+Configure the HTML reporter:
+
+``` javascript
+configure({
+  reporters: [
+    {
+      name: 'html',
+      outputDir: 'test-reports',  // Where to save the report (default: 'test-reports')
+      title: 'My Test Results',   // Report title (default: 'Test Results')
+      theme: 'auto',              // 'light', 'dark', or 'auto' (default: 'auto')
+      screenshots: {
+        copy: false  // Copy screenshots into report for portability (default: false)
+      }
+    }
+  ]
+});
+```
+
+The HTML reporter works seamlessly with screenshots (stored in-place by default) and coverage data from any Istanbul-compatible tool (c8, nyc, etc.). Open the generated `index.html` file in a browser to view the interactive dashboard.
 
 Custom reporters can be defined by extending the base reporter class, or by providing a generator
 function:
@@ -292,7 +323,7 @@ configure({
     /** optional custom suffixes used for new screenshot and diff filenames */
     // suffix: { new: '.new', diff: '.diff' },
     /** optional screenshot comparison function */
-    async compare(baseline, comparison, diff) {
+    async compare({ baseline, comparison, diff }) {
       // accepts image paths to compare, producing a diff image if not matching
       let { match } = await compare(baseline, comparison, diff);
       // should return { match: true } if no difference is found
@@ -303,11 +334,10 @@ configure({
 });
 ```
 
-When comparing screenshots, the compare function will be called with the existing screenshot path
-and the new screenshot path. This function should return an object with a `match` property which
-should be `true` when screenshots match. The compare function is also called with a third argument,
-a diff path, which can be used to save a diff image with the other screenshots. Any existing diff
-image is removed before comparing new screenshots.
+When comparing screenshots, the compare function will be called with an object containing the
+existing baseline path, the new screenshot path, the diff output path, and related screenshot
+metadata. This function should return an object with a `match` property which should be `true`
+when screenshots match. Any existing diff image is removed before comparing new screenshots.
 
 ## Still brewing
 
