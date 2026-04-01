@@ -5,28 +5,36 @@
   "license": "MIT",
   "type": "module",
   "files": [
-    "lib"
+    "lib",
+    "types"
   ],
   "main": "lib/harness.js",
+  "types": "types/harness.d.ts",
   "exports": {
     ".": {
+      "types": "./types/harness.d.ts",
       "node": "./lib/harness.node.js",
       "default": "./lib/harness.js"
     },
     "./reporters": {
+      "types": "./types/reporter/index.d.ts",
       "default": "./lib/reporter/index.js"
     },
     "./reporter/*": {
+      "types": "./types/reporter/*.d.ts",
       "default": "./lib/reporter/*.js"
     },
     "./plugins": {
+      "types": "./types/plugin/index.d.ts",
       "node": "./lib/plugin/index.node.js",
       "default": "./lib/plugin/index.js"
     },
     "./plugin/*": {
+      "types": "./types/plugin/*.d.ts",
       "default": "./lib/plugin/*.js"
     },
     "./bundler/*": {
+      "types": "./types/plugin/bundler/*.d.ts",
       "default": "./lib/plugin/bundler/*.js"
     }
   },
@@ -37,7 +45,8 @@
   "scripts": {
     "lint": "eslint .",
     "test:coverage": "c8 npm run test",
-    "test": "node tests/all.test.js"
+    "test": "node tests/all.test.js",
+    "prepack": "tsc"
   },
   "dependencies": {
     "cross-spawn": "^7.0.3",
@@ -52,7 +61,8 @@
     "c8": "^10.1.2",
     "eslint": "^9.5.0",
     "globals": "^15.5.0",
-    "neostandard": "^0.7.0"
+    "neostandard": "^0.7.0",
+    "typescript": "^5.0.0"
   },
   "peerDependencies": {
     "rollup": "^4.0.0",

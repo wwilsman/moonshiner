@@ -3,4 +3,5 @@
 .local-firefox
 coverage
 node_modules
+types
 *.lock
