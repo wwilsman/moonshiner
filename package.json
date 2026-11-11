@@ -49,13 +49,12 @@
     "prepack": "tsc"
   },
   "dependencies": {
-    "cross-spawn": "^7.0.3",
-    "extract-zip": "^2.0.1",
-    "glob": "^10.4.1",
+    "@xhmikosr/decompress": "^11.1.4",
+    "cross-spawn": "^7.0.6",
+    "glob": "^14.0.4",
     "istanbul-lib-coverage": "^3.0.0",
     "mime": "^4.0.3",
-    "rimraf": "^5.0.7",
-    "ws": "^8.17.1"
+    "ws": "^8.22.2"
   },
   "devDependencies": {
     "c8": "^10.1.2",
@@ -75,5 +74,8 @@
     "vite": {
       "optional": true
     }
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

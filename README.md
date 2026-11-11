@@ -16,6 +16,8 @@ High-proof testing
 
 ## Installation
 
+Moonshiner requires Node.js 20 or newer.
+
 ``` shell
 $ npm install --save-dev moonshiner
 ```
