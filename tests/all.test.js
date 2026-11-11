@@ -1,5 +1,6 @@
 import { describe, test } from 'moonshiner';
 import { testFork, testSpawn } from './helpers.js';
+import './dependencies.test.js';
 
 describe('Moonshiner', { timeout: 0 }, () => {
   test('test harness', async () => {
